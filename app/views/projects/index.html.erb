@@ -1,0 +1,19 @@
+
+<h4 align="center"> <%= @proj.name.capitalize %>  </h4>
+
+
+<% @proj.each do |project| %>
+    <div class="row">
+    
+        <div class="col-md-8 col-md-offset-4">
+            <h4> <%= link_to project.name.capitalize, project_path(project) %></h4>
+            <p>  <%= truncate(project.description, length:100) %> </p>
+            <br>
+            </div>
+            
+           
+      
+       
+    </div>
+     
+<% end %>

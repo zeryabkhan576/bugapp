@@ -1,0 +1,44 @@
+<h1> CREATE  NEW BUG  </h1>
+
+<div class="row">
+  <div class="col-md-12">
+    <%= form_for(@bugs, :html => {class: "form-horizontal" }) do |form| %>
+     <div class ="form-group">
+        <div class="control-label  col-md-2" >
+          <%= form.label :name %>
+        </div>
+     <div class ="col-md-8">
+        <%= form.text_field :name, class: "form-control", placeholder:"Enter bug's Unique name ", autofocus: true %>
+  </div>
+</div>
+   
+    <div class ="form-group">
+    <div class="control-label  col-md-2" >
+       <%= form.label :Description%>
+    </div>
+  <div class ="col-md-8">
+  <%= form.text_area :description, class: "form-control" %>
+
+  </div>
+  </div>
+  <div class ="form-group">
+  <div class="control-label  col-md-2" >
+     <%= form.label :Deadline%>
+  </div>
+  <div class ="col-md-8">
+  <%= form.text_field :deadline, class: "form-control" %>
+
+  </div>
+  </div>
+
+    <div class ="form-group">
+      <div class="col-md-offset-2  col-md-10" >
+         <%= form.submit "SPOT A BUG",class:"btn btn-primary btn-lg btn-xlarge" %> 
+      </div>
+      </div>
+   
+   <div class="col-md-4 col-md-offset-4">
+      [<%= link_to " All bugs " , bugs_path %> ]       
+    <%end %>
+      </div>
+</div>
