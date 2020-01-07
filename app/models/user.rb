@@ -13,5 +13,8 @@ class User < ApplicationRecord
     false
   end
 	validates :username, uniqueness: true
-  enum user_type:[:developer, :manager, :qa ]  
+  enum user_type:[:developer, :manager, :qa ] 
+  has_many :developers 
+  has_many :managers
+  has_many :qas 
 end
