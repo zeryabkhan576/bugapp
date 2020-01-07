@@ -1,0 +1,19 @@
+
+<h4 align="center"> <%= @dev.name.capitalize %>  </h4>
+
+
+<% @dev.each do |developer| %>
+    <div class="row">
+    
+        <div class="col-md-8 col-md-offset-4">
+            <h4> <%= link_to developer.name.capitalize, developer_path(developer) %></h4>
+            
+            <br>
+            </div>
+            
+           
+      
+       
+    </div>
+     
+<% end %>

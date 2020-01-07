@@ -48,5 +48,5 @@ end
 private 
 
     def dev_params
-        params.require(:bug).permit(:name, :description, :deadline)
+        params.require(:developer).permit(:name)
     end

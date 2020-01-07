@@ -9,7 +9,7 @@ class ManagersController < ApplicationController
 	end
 
 	def show
-		@man= Manger.find(params[:id])
+		@man= Manager.find(params[:id])
 	end
 
 
@@ -21,7 +21,7 @@ class ManagersController < ApplicationController
 	def create
 		@man = Manager.new(man_params)
 		if @man.save
-	         flash[:notice] = "project was successfully created"
+	         flash[:notice] = "manager was successfully created"
 	         redirect_to manager_path(@man)
 	     else
 	      render 'new'
@@ -31,7 +31,7 @@ class ManagersController < ApplicationController
 	def update
 		@man = Manager.find(params[:id])
 		if @man.update(man_params)
-            flash[:success] = " project updated"
+            flash[:success] = " manager updated"
             redirect_to @man
         else
             render 'edit'
@@ -48,5 +48,5 @@ end
 private 
 
     def  man_params
-        params.require(:bug).permit(:name, :description, :deadline)
+        params.require(:manager).permit(:name)
     end

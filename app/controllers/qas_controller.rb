@@ -1,4 +1,4 @@
-class QaController < ApplicationController
+class QasController < ApplicationController
 
 	def index
 		@qas = Qa.all
@@ -31,7 +31,7 @@ class QaController < ApplicationController
 	def update
 		@qas = Qa.find(params[:id])
 		if @qas.update(qa_params)
-            flash[:success] = " project updated"
+            flash[:success] = " qa updated"
             redirect_to @qas
         else
             render 'edit'
@@ -48,5 +48,5 @@ end
 private 
 
     def qa_params
-        params.require(:qa).permit(:name, :description, :deadline)
+        params.require(:qa).permit(:name)
     end
