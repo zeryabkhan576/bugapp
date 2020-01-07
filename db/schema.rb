@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_07_101726) do
+ActiveRecord::Schema.define(version: 2020_01_07_125820) do
 
   create_table "bugs", force: :cascade do |t|
     t.string "name"
@@ -21,25 +21,28 @@ ActiveRecord::Schema.define(version: 2020_01_07_101726) do
   end
 
   create_table "developers", force: :cascade do |t|
-    t.integer "user_id"
     t.string "name"
+    t.integer "project_id"
+    t.integer "bugs_id"
   end
 
   create_table "managers", force: :cascade do |t|
-    t.integer "user_id"
     t.string "name"
+    t.integer "project_id"
+    t.integer "developer_id"
+    t.integer "qa_id"
   end
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.integer "user_id"
     t.integer "bug_id"
   end
 
   create_table "qas", force: :cascade do |t|
-    t.integer "user_id"
     t.string "name"
+    t.integer "bug_id"
+    t.integer "project_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -52,6 +55,9 @@ ActiveRecord::Schema.define(version: 2020_01_07_101726) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "username"
     t.integer "user_type", default: 0
+    t.integer "manager_id"
+    t.integer "developer_id"
+    t.integer "qa_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
