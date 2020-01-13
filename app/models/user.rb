@@ -6,15 +6,19 @@ class User < ApplicationRecord
 
       
   def email_required?
-    false
+    true
   end
 
   def email_changed?
     false
   end
-	validates :username, uniqueness: true
-  enum user_type:[:developer, :manager, :qa ] 
-  has_many :developers 
-  has_many :managers
-  has_many :qas 
+  validates :username, uniqueness: true
+  
+  enum role:[:developer, :manager, :qa ] 
+
+  has_many :user_projects
+  has_many :projects, through: :user_projects
+  has_many :bugs
+  
+
 end

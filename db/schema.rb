@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_07_140420) do
+ActiveRecord::Schema.define(version: 2020_01_10_122327) do
 
   create_table "bugs", force: :cascade do |t|
     t.string "name"
@@ -18,49 +18,18 @@ ActiveRecord::Schema.define(version: 2020_01_07_140420) do
     t.integer "deadline"
     t.integer "bug_type", default: 0
     t.integer "bug_status", default: 0
-    t.integer "dev_bug_id"
-  end
-
-  create_table "dev_bug", force: :cascade do |t|
-    t.integer "developer_id"
-    t.integer "bug_id"
-  end
-
-  create_table "dev_pro", force: :cascade do |t|
-    t.integer "developer_id"
     t.integer "project_id"
-  end
-
-  create_table "developers", force: :cascade do |t|
-    t.string "name"
-    t.integer "dev_bug_id"
-    t.integer "dev_pro_id"
-  end
-
-  create_table "managers", force: :cascade do |t|
-    t.string "name"
-    t.integer "project_id"
-    t.integer "developer_id"
-    t.integer "qa_id"
+    t.integer "user_id"
   end
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.integer "bug_id"
-    t.integer "dev_pro_id"
-    t.integer "qa_pro_id"
   end
 
-  create_table "qa_pros", force: :cascade do |t|
-    t.integer "qa_id"
+  create_table "user_projects", force: :cascade do |t|
+    t.integer "user_id"
     t.integer "project_id"
-  end
-
-  create_table "qas", force: :cascade do |t|
-    t.string "name"
-    t.integer "bug_id"
-    t.integer "qa_pro_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -72,10 +41,7 @@ ActiveRecord::Schema.define(version: 2020_01_07_140420) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "username"
-    t.integer "user_type", default: 0
-    t.integer "manager_id"
-    t.integer "developer_id"
-    t.integer "qa_id"
+    t.integer "role", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
-
+	#   protect_from_forgery
+	#   before_action :authenticate_user!
+	#  load_and_authorize_resource
 	def index
 		@proj = Project.all
 	end
@@ -18,7 +20,8 @@ class ProjectsController < ApplicationController
 
 
 	def create
-		@proj = Project.new(project_params)
+		@proj = current_user.projects.new(project_params)
+		# @proj.user_project_id.user_id= current_user.id 
 		if @proj.save
 	         flash[:notice] = "project was successfully created"
 	         redirect_to project_path(@proj)
@@ -38,6 +41,10 @@ class ProjectsController < ApplicationController
 	end
 
 	def destroy
+		@proj = Project.find(params[:id]).destroy
+        flash[:notice] = "recipe was successful deleted"
+        redirect_to projects_path
+    
 	end
 
 
@@ -46,6 +53,6 @@ end
 	private 
 
 	    def project_params
-	      params.require(:project).permit(:name, :description )
+	      params.require(:project).permit(:name, :description, user_ids: [] ,user_id: [] )
 	    end
 	

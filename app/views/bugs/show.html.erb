@@ -5,11 +5,23 @@
 
     <div class="row">
     
-        <div class="col-md-8 col-md-offset-4 ">
+        <div class="col-md-8 col-md-offset-2 ">
             <h4> Name : <%=  @bugs.name.capitalize %></h4>
             <p>  Description : <%= truncate(@bugs.description, length:100) %> </p>
             <br>
-            </div>
+            <P>
+            
+            <%= link_to " Bugs list " , bugs_path,class: "btn btn-xs btn-warning" %>
+            <% if can? :update, @bugs %>
+            <%= link_to "Edit", edit_bug_path(@bugs), class: "btn btn-xs btn-warning" %>
+            <% end %>
+            <% if can? :destroy, @bugs %>
+            <%= link_to "Delete bug", bug_path(@bugs), method: :delete, 
+                                              data: {confirm:"are you sure about deleting this project"},
+                                              class: "btn btn-xs btn-danger" %></p>
+            <% end %>
+        </div>
+
             
        
     </div>

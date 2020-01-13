@@ -1,6 +1,5 @@
 class Project < ApplicationRecord   
-    has_many :dev_pros
-    has_many :qa_pros
+    has_many :user_projects
+    has_many :users, through: :user_projects
     has_many :bugs
-    belongs_to :manager
 end

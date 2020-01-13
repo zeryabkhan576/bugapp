@@ -1,0 +1,22 @@
+<h1> Welcome <%= current_user.username.capitalize %> </h1>
+
+<div class="row">
+    
+    <div class="col-md-8 col-md-offset-2 ">
+        <p> 
+        <% if can? :read, @proj %>
+            <%= link_to "Project List", projects_path, class:"btn btn-danger" %>
+        <% end %>
+        <% if can? :create, @proj %>
+            <%= link_to "Create Project", new_project_path, class:"btn btn-danger" %>
+        <% end %>
+        <% if can? :create, @bugs %>
+            <%= link_to "Report Bug", new_bug_path, class:"btn btn-danger" %>
+        <% end %>
+        <% if can? :read, @bugs %>
+            <%= link_to "Bug List", bugs_path, class:"btn btn-danger" %>
+        <% end %>
+        </p>
+    </div>
+
+</div>

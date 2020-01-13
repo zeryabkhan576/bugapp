@@ -1,4 +1,4 @@
-<h1> CREATE  NEW BUG  </h1>
+<h1> Report New Bug </h1>
 
 <div class="row">
   <div class="col-md-12">
@@ -27,9 +27,21 @@
   </div>
   <div class ="col-md-8">
   <%= form.text_field :deadline, class: "form-control" %>
+  </div>
+  </div>
 
+  <div class="control-label  col-md-2" >
+     <%= form.label :Project%>
   </div>
+  <div class ="col-md-8">
+   
+   <%= form.fields_for :project_ids do |r| %>
+      <%= r.collection_select(:project_ids, Project.all, :id, :name, { :prompt => 'Select Project' } ) %>
+   <% end %>
+  
   </div>
+    <br><br>
+
 
     <div class ="form-group">
       <div class="col-md-offset-2  col-md-10" >

@@ -27,6 +27,7 @@ gem 'sassc-rails', '>= 2.1.2'
 gem 'sprockets', '>=4.0.0'
 gem 'sprockets-rails', '~> 3.2', '>= 3.2.1'
 gem 'autoprefixer-rails', '~> 9.7', '>= 9.7.3'
+gem "cancan"
 
 
 # Use Active Storage variant
