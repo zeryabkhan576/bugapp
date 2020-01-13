@@ -48,20 +48,4 @@ class UsersController < ApplicationController
       redirect_to users_url
     end
   
-    private
-  
-    def safe_params
-      safe_attributes =
-        [
-          :first_name,
-          :last_name,
-          :email,
-          :password,
-          :password_confirmation,
-        ]
-      if current_user.is?(:admin)
-        safe_attributes += [:role_ids]
-      end
-      params.require(:user).permit(*safe_attributes)
-    end
-  end
+end
