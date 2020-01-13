@@ -28,7 +28,7 @@
   <div class ="col-md-8">
 
       <%= form.fields_for :user_ids do |r| %>
-      <%= r.collection_select(:user_ids, User.where(role: 0),:id, :username, { :prompt => 'Select Qa' } ) %>
+      <%= r.collection_select(:user_ids, User.where(role: "qa"),:id, :username, { :prompt => 'Select Qa' } ) %>
       <% end %>
 
   </div>
@@ -41,7 +41,7 @@
   <div class ="col-md-8">
 
       <%= form.fields_for :user_id do |r| %>
-      <%= r.collection_select(:user_id, User.where(role: 0), :id, :username, { :prompt => 'Select Developer' } ) %>
+      <%= r.collection_select(:user_id, User.where(role: "developer"), :id, :username, { :prompt => 'Select Developer' } ) %>
       <% end %>
 
   </div>

@@ -25,10 +25,12 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
   
-  <div class= "filed">
-   <%= f.label :Role %>
-  #  <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
-  </div>  
+   <div class= "filed">
+    <%= f.label :Role %>
+  
+    <%= f.select :role , User.roles.map { |key, value| [key.humanize, key] } %>
+   </div>  
+  
   <br >
 
   <div class="actions">

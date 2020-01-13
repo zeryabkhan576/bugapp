@@ -15,6 +15,7 @@ class User < ApplicationRecord
   validates :username, uniqueness: true
   
   enum role:[:developer, :manager, :qa ] 
+ 
 
   has_many :user_projects
   has_many :projects, through: :user_projects
