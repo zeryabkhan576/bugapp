@@ -4,16 +4,16 @@
     
     <div class="col-md-8 col-md-offset-2 ">
         <p> 
-        <% if can? :read, @proj %>
+        <% if can? :read, Project %>
             <%= link_to "Project List", projects_path, class:"btn btn-danger" %>
-        <% end %>
-        <% if can? :create, @proj %>
+        <% end %>  
+        <% if can? :create, Project %>
             <%= link_to "Create Project", new_project_path, class:"btn btn-danger" %>
         <% end %>
-        <% if can? :create, @bugs %>
+        <% if can? :create, Bug %>
             <%= link_to "Report Bug", new_bug_path, class:"btn btn-danger" %>
         <% end %>
-        <% if can? :read, @bugs %>
+        <% if can? :read, Bug %>
             <%= link_to "Bug List", bugs_path, class:"btn btn-danger" %>
         <% end %>
         </p>

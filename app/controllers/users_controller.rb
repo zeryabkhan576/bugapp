@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-    load_and_authorize_resource
-  
+   
+    before_action :authenticate_user!
+
     def index
       @users = User.all
     end
@@ -45,7 +46,7 @@ class UsersController < ApplicationController
       else
         flash[:error] = t('users.controller.destroy.prevent_self_destroy')
       end
-      redirect_to users_url
+        redirect_to users_url
     end
   
 end

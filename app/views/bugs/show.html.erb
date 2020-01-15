@@ -8,21 +8,23 @@
         <div class="col-md-8 col-md-offset-2 ">
             <h4> Name : <%=  @bugs.name.capitalize %></h4>
             <p>  Description : <%= truncate(@bugs.description, length:100) %> </p>
+            <p>  Deadline : <%= @bugs.deadline %> </p>
+            <p>  Type : <%= @bugs.bug_type %> </p>
+            <p>  Status : <%= @bugs.bug_status %> </p>
+            <p>  Project : <%= @bugs.project.name %> </p>
+            <p>  Developer : <%= @bugs.user.username %> </p>
             <br>
             <P>
             
             <%= link_to " Bugs list " , bugs_path,class: "btn btn-xs btn-warning" %>
             <% if can? :update, @bugs %>
-            <%= link_to "Edit", edit_bug_path(@bugs), class: "btn btn-xs btn-warning" %>
+              <%= link_to "Edit", edit_bug_path(@bugs), class: "btn btn-xs btn-warning" %>
             <% end %>
-            <% if can? :destroy, @bugs %>
-            <%= link_to "Delete bug", bug_path(@bugs), method: :delete, 
-                                              data: {confirm:"are you sure about deleting this project"},
+            <% if can? :update, @bugs %>
+                <%= link_to "Delete bug", bug_path(@bugs), method: :delete, 
+                                              data: {confirm:"are you sure about deleting this bug"},
                                               class: "btn btn-xs btn-danger" %></p>
             <% end %>
-        </div>
-
-            
-       
+        </div>         
     </div>
      

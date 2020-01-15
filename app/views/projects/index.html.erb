@@ -4,15 +4,14 @@
 <h4 align="center"> <%= @proj.name.capitalize %> Lists  </h4>
 
 
+
 <% @proj.each do |project| %>
-    <div class="row">
-    
-        <div class="col-md-8 col-md-offset-2">
-            <h4> <%= link_to project.name.capitalize, project_path(project) %></h4>
-            <p>  <%= truncate(project.description, length:100) %> 
-            <br><br>
-            </p>
+        <div class="row"
+            <div class="col-md-8 col-md-offset-2">
+                <h4> <%= link_to project.name.capitalize, project_path(project) %></h4>
+                <p>  <%= truncate(project.description, length:100) %> 
+                <br><br>
+                </p>
+            </div>
         </div>
-    </div>
-     
 <% end %>

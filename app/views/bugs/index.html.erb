@@ -5,17 +5,14 @@
 
 
 <% @bugs.each do |bug| %>
-    <div class="row">
+    <!-- <% if current_user.id == bug.user_id %> -->
+  		  <div class="row">
     
         <div class="col-md-8 col-md-offset-2">
             <h4> <%= link_to bug.name.capitalize, bug_path(bug) %></h4>
             <p>  <%= truncate(bug.description, length:100) %> </p>
             <br>
-            </div>
-            
-           
-      
-       
+            </div>  
     </div>
-     
+<% end %>     
 <% end %>

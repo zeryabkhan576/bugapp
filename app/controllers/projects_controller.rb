@@ -1,21 +1,32 @@
 class ProjectsController < ApplicationController
 	#   protect_from_forgery
-	#   before_action :authenticate_user!
-	#  load_and_authorize_resource
+	  before_action :authenticate_user!
+	  protect_from_forgery
+	  load_and_authorize_resource
+	# filter_resource_access
 	def index
-		@proj = Project.all
+		@proj = current_user.projects
 	end
 
 	def new
+		
 		@proj = Project.new
+		# authorize! :create , @proj
+		# unauthorized! if cannot? :create, @proj
 	end
 
 	def show
+		
 		@proj = Project.find(params[:id])
+		# authorize! :read , @proj
+		# unauthorized! if cannot? :read, @proj
 	end
 
 	def edit
+		
 		@proj = Project.find(params[:id])
+		# authorize! :update , @proj
+		# unauthorized! if cannot? :update, @proj
 	end
 
 
@@ -41,18 +52,22 @@ class ProjectsController < ApplicationController
 	end
 
 	def destroy
+		
 		@proj = Project.find(params[:id]).destroy
         flash[:notice] = "recipe was successful deleted"
-        redirect_to projects_path
+		redirect_to projects_path
+		# authorize! :destroy , @proj
+		# unauthorized! if cannot? :destroy, @proj
     
 	end
-
 
 end
 
 	private 
 
-	    def project_params
-	      params.require(:project).permit(:name, :description, user_ids: [] ,user_id: [] )
+		def project_params
+			
+		  params.require(:project).permit(:name, :description, user_ids: [] ,user_id: [] )
+		  
 	    end
 	
